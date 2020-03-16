@@ -36,7 +36,27 @@ if [ "$choice" = "1" ]; then
 	git clone https://github.com/alexbers/mtprotoproxy.git -b stable
 	cd mtprotoproxy
 	
-	#Fake TLS domain
+	#端口
+	mtp_port=443
+	while true
+	do
+		echo "请输入要设置的端口(不填写则默认443端口):"
+		read mtp_port
+		if [ ! -n "$mtp_port" ]; then
+			echo "使用默认端口: 443"
+			break
+		else
+			if [ ${mtp_port} -ge 1 ] && [ ${mtp_port} -le 65535 ] && [ ${mtp_port:0:1} != 0 ]; then
+				echo "使用自定义端口: $mtp_port"
+				sed -i "s/PORT = 443/PORT = $mtp_port/g" /root/mtprotoproxy/config.py
+				break
+			fi
+		fi
+		echo -e "[\033[33m错误\033[0m] 请重新输入一个客户端连接端口 [1-65535]"
+	done
+	
+	
+	#Fake TLS
 	while true
 	do
 		echo "请输入需要伪装的域名:"
@@ -63,7 +83,7 @@ if [ "$choice" = "1" ]; then
 	
 	echo "请确认配置是否有误"
 	echo "--------------------"
-	echo "Port: 443"
+	echo "Port: $mtp_port"
 	echo "Fake TLS domain: $domain"
 	echo "AD_TAG: $adtag"
 	echo "--------------------"
