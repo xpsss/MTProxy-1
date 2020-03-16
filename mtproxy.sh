@@ -23,10 +23,6 @@ if [ "$choice" = "1" ]; then
 	echo "开始安装MTProxy"
 	
 	#安装必要组件
-	apt-update 2>/dev/null
-	apt-insall wget nano git -y 2>/dev/null
-	yum update 2>/dev/null
-	yum install wget nano git -y 2>/dev/null
 	wget -qO- get.docker.com | sh
 	systemctl enable docker
 	curl -L https://github.com/docker/compose/releases/download/1.25.0-rc4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -44,22 +40,13 @@ if [ "$choice" = "1" ]; then
 		read mtp_port
 		if [ ! -n "$mtp_port" ]; then
 			echo "使用默认端口: 443"
-			grep_port='netstat -tlpn | grep "\b$mtp_port\b"'
-			if [ -n "$grep_port" ]; then
-				echo -e "[\033[33m错误\033[0m] 443端口被占用!"
-			else
-				break
-			fi
+			mtp_port=443
+			break
 		else
 			if [ ${mtp_port} -ge 1 ] && [ ${mtp_port} -le 65535 ] && [ ${mtp_port:0:1} != 0 ]; then
 				echo "使用自定义端口: $mtp_port"
-				grep_port='netstat -tlpn | grep "\b$mtp_port\b"'
-				if [ -n "$grep_port" ]; then
-				echo -e "[\033[33m错误\033[0m] $mtp_port端口被占用!"
-				else
-					sed -i "s/PORT = 443/PORT = $mtp_port/g" /root/mtprotoproxy/config.py
-					break
-				fi
+				sed -i "s/PORT = 443/PORT = $mtp_port/g" /root/mtprotoproxy/config.py
+				break
 			fi
 		fi
 		echo -e "[\033[33m错误\033[0m] 请重新输入一个客户端连接端口 [1-65535]"
