@@ -1,5 +1,5 @@
 # MTProxy一键脚本
-mtproxy一键脚本
+MTProxy一键脚本
 <del>专为小白开发</del>
 <hr>
 
@@ -23,5 +23,8 @@ bash mtproxy.sh
 
 <hr>
 
-联系我（
-<a href="//t.me/KLDGodYnb" target="_blank">@kldgodynb</a>
+联系我：
+<br>
+Telegram:<a href="//t.me/KLDGodYnb" target="_blank">@kldgodynb</a>
+<br>
+Mail:<a href="mailto:kldgodynb@gmail.com" target="_blank">kldgodynb@gmail.com</a>
