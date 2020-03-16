@@ -7,6 +7,7 @@ MTProxy一键脚本
 Centos:
 
 ```BASH
+yum update &&
 yum install wget git nano net-tools -y &&
 wget https://github.com/KLDGodY/mtproxy/raw/master/mtproxy.sh &&
 bash mtproxy.sh
@@ -15,6 +16,7 @@ bash mtproxy.sh
 Ubuntu/Debian:
 
 ```BASH
+apt-get update &&
 apt-get install wget git nano net-tools -y &&
 wget https://github.com/KLDGodY/mtproxy/raw/master/mtproxy.sh &&
 bash mtproxy.sh
