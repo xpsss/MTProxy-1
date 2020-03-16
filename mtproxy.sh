@@ -46,7 +46,7 @@ if [ "$choice" = "1" ]; then
 			echo "使用默认端口: 443"
 			grep_port='netstat -tlpn | grep "\b$mtp_port\b"'
 			if [ -n "$grep_port" ]; then
-				echo "443端口被占用!"
+				echo "[\033[33m错误\033[0m] 443端口被占用!"
 			else
 				break
 			fi
@@ -55,7 +55,7 @@ if [ "$choice" = "1" ]; then
 				echo "使用自定义端口: $mtp_port"
 				grep_port='netstat -tlpn | grep "\b$mtp_port\b"'
 				if [ -n "$grep_port" ]; then
-				echo "$mtp_port端口被占用!"
+				echo "[\033[33m错误\033[0m] $mtp_port端口被占用!"
 				else
 					sed -i "s/PORT = 443/PORT = $mtp_port/g" /root/mtprotoproxy/config.py
 					break
@@ -109,7 +109,7 @@ if [ "$choice" = "1" ]; then
 	clear
 	echo "--------------------"
 	echo "你的MTProxy链接是:"
-	echo "tg://proxy?server=$IPAddress&port=443&secret=ee00000000000000000000000000000001$domainhex"
+	echo "tg://proxy?server=$IPAddress&port=$mtp_port&secret=ee00000000000000000000000000000001$domainhex"
 	echo "--------------------"
 	echo "Telegram: https://t.me/kldgodynb"
 
