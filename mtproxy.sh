@@ -46,7 +46,7 @@ if [ "$choice" = "1" ]; then
 			echo "使用默认端口: 443"
 			grep_port='netstat -tlpn | grep "\b$mtp_port\b"'
 			if [ -n "$grep_port" ]; then
-				echo "[\033[33m错误\033[0m] 443端口被占用!"
+				echo -e "[\033[33m错误\033[0m] 443端口被占用!"
 			else
 				break
 			fi
@@ -55,7 +55,7 @@ if [ "$choice" = "1" ]; then
 				echo "使用自定义端口: $mtp_port"
 				grep_port='netstat -tlpn | grep "\b$mtp_port\b"'
 				if [ -n "$grep_port" ]; then
-				echo "[\033[33m错误\033[0m] $mtp_port端口被占用!"
+				echo -e "[\033[33m错误\033[0m] $mtp_port端口被占用!"
 				else
 					sed -i "s/PORT = 443/PORT = $mtp_port/g" /root/mtprotoproxy/config.py
 					break
