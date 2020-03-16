@@ -10,9 +10,12 @@ none='\e[0m'
 [[ $(id -u) != 0 ]] && echo -e "哎呀......请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}\n" && exit 1
 clear
 echo "--------------------"
-echo "1) 安装"
-echo "2) 卸载"
-echo "0) 退出"
+echo "1) 安装代理"
+echo "2) 卸载代理"
+echo "3) 运行服务"
+echo "4) 重启服务"
+echo "5) 停止服务"
+echo "0) 退出脚本"
 echo "--------------------"
 echo "Telegram: https://t.me/kldgodynb"
 echo "--------------------"
@@ -88,6 +91,7 @@ if [ "$choice" = "1" ]; then
 	
 	#获取IP
 	IPAddress=$(curl -sSL https://www.bt.cn/Api/getIpAddress)
+	
 	#计算域名hex值
 	hexxxxxx=$(xxd -pu <<< "$domain")
 	hexvel=$(xxd -pu <<< "$domain")
@@ -99,6 +103,7 @@ if [ "$choice" = "1" ]; then
 	echo "tg://proxy?server=$IPAddress&port=$mtp_port&secret=ee00000000000000000000000000000001$domainhex"
 	echo "--------------------"
 	echo "Telegram: https://t.me/kldgodynb"
+#结束安装
 
 elif [ "$choice" = "2" ]; then
 	if [ ! -d "/root/mtprotoproxy" ]; then
@@ -109,6 +114,31 @@ elif [ "$choice" = "2" ]; then
 	fi
 elif [ "$choice" = "0" ]; then
 	exit
+#结束卸载
+
+elif [ "$choice" = "3" ]; then
+	if [ ! -d "/root/mtprotoproxy" ]; then
+		echo "宝贝,都没安装呢:("
+	else
+		cd /root/mtprotoproxy && docker start mtprotoproxy_mtprotoproxy_1
+	fi
+#结束启动
+
+elif [ "$choice" = "4" ]; then
+	if [ ! -d "/root/mtprotoproxy" ]; then
+		echo "宝贝,都没安装呢:("
+	else
+		cd /root/mtprotoproxy && docker restart mtprotoproxy_mtprotoproxy_1
+	fi
+#结束重启
+
+elif [ "$choice" = "5" ]; then
+	if [ ! -d "/root/mtprotoproxy" ]; then
+		echo "宝贝,都没安装呢:("
+	else
+		cd /root/mtprotoproxy && docker stop mtprotoproxy_mtprotoproxy_1
+	fi
+#结束停止
 
 else
 	echo "???你输入的东西 这个辣鸡脚本不懂诶:("
