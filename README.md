@@ -4,23 +4,11 @@ MTProxy一键脚本
 <hr>
 
 ### 安装/卸载:
-Centos:
 
 ```BASH
-yum update &&
-yum install wget git nano net-tools -y &&
-wget https://github.com/KLDGodY/mtproxy/raw/master/mtproxy.sh &&
-bash mtproxy.sh
+bash <(curl -sSL https://git.io/JvXJX)
 ```
 
-Ubuntu/Debian:
-
-```BASH
-apt-get update &&
-apt-get install wget git nano net-tools -y &&
-wget https://github.com/KLDGodY/mtproxy/raw/master/mtproxy.sh &&
-bash mtproxy.sh
-```
 <img src="https://backblazebimg.2002000.xyz/file/imgurllx/imgs/2020/03/ce64ba572ac53877.png" />
 
 <hr>
