@@ -10,14 +10,16 @@ none='\e[0m'
 [[ $(id -u) != 0 ]] && echo -e "哎呀......请使用 ${red}root ${none}用户运行 ${yellow}~(^_^) ${none}\n" && exit 1
 clear
 echo "--------------------"
+echo "项目地址: https://github.com/KLDGodY/MTProxy"
+echo "运行方式: bash <(curl -sSL https://git.io/JvXJX)"
+echo "Telegram: https://t.me/kldgodynb"
+echo
 echo "1) 安装代理"
 echo "2) 卸载代理"
 echo "3) 运行服务"
 echo "4) 重启服务"
 echo "5) 停止服务"
 echo "0) 退出脚本"
-echo "--------------------"
-echo "Telegram: https://t.me/kldgodynb"
 echo "--------------------"
 echo "请输入命令:"
 read choice
@@ -26,6 +28,10 @@ if [ "$choice" = "1" ]; then
 	echo "开始安装MTProxy"
 	
 	#安装必要组件
+	apt update 2>/dev/null
+	apt install git wget curl -y 2>/dev/null
+	yum update -y 2>/dev/null
+	yum install install git wget curl -y 2>/dev/null
 	wget -qO- get.docker.com | sh
 	systemctl enable docker
 	curl -L https://github.com/docker/compose/releases/download/1.25.0-rc4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -93,7 +99,6 @@ if [ "$choice" = "1" ]; then
 	IPAddress=$(curl -sSL https://www.bt.cn/Api/getIpAddress)
 	
 	#计算域名hex值
-	hexxxxxx=$(xxd -pu <<< "$domain")
 	hexvel=$(xxd -pu <<< "$domain")
 	domainhex=${hexvel%0a}
 	docker-compose up -d
