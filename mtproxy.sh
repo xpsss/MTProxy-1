@@ -11,7 +11,7 @@ none='\e[0m'
 clear
 echo "--------------------"
 echo "项目地址: https://github.com/KLDGodY/MTProxy"
-echo "运行方式: bash <(curl -sSL https://git.io/JvXJX)"
+echo "运行脚本: bash <(curl -sSL https://git.io/JvXJX)"
 echo "Telegram: https://t.me/kldgodynb"
 echo
 echo "1) 安装代理"
@@ -24,6 +24,10 @@ echo "--------------------"
 echo "请输入命令:"
 read choice
 if [ "$choice" = "1" ]; then
+	if [ -d "/root/mtprotoproxy" ]; then
+		echo "!你都安装了!(如果没安装提示这个 请 rm -rf /root/mtprotoproxy)"
+		exit 1
+	fi
 	cd /root
 	echo "开始安装MTProxy"
 	
@@ -133,7 +137,10 @@ elif [ "$choice" = "4" ]; then
 	if [ ! -d "/root/mtprotoproxy" ]; then
 		echo "宝贝,都没安装呢:("
 	else
-		cd /root/mtprotoproxy && docker restart mtprotoproxy_mtprotoproxy_1
+		cd /root/mtprotoproxy
+		docker stop mtprotoproxy_mtprotoproxy_1
+		service docker restart
+		docker start mtprotoproxy_mtprotoproxy_1
 	fi
 #结束重启
 
@@ -141,7 +148,8 @@ elif [ "$choice" = "5" ]; then
 	if [ ! -d "/root/mtprotoproxy" ]; then
 		echo "宝贝,都没安装呢:("
 	else
-		cd /root/mtprotoproxy && docker stop mtprotoproxy_mtprotoproxy_1
+		cd /root/mtprotoproxy
+		docker stop mtprotoproxy_mtprotoproxy_1
 	fi
 #结束停止
 
