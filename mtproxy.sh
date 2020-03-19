@@ -25,7 +25,7 @@ echo "请输入命令:"
 read choice
 if [ "$choice" = "1" ]; then
 	if [ -d "/root/mtprotoproxy" ]; then
-		echo "!你都安装了!(如果没安装提示这个 请 rm -rf /root/mtprotoproxy)"
+		echo "!检测到目录存在!(如果没安装提示这个 请 rm -rf /root/mtprotoproxy)"
 		exit 1
 	fi
 	cd /root
@@ -86,13 +86,20 @@ if [ "$choice" = "1" ]; then
 		echo -e "[\033[33m错误\033[0m] 域名无法访问,请重新输入或更换域名!"
 	done
 	
+	secret=$(head -c 16 /dev/urandom | xxd -ps)
+	sed -i "s/00000000000000000000000000000001/$secret/g" /root/mtprotoproxy/config.py
+	
 	#AG_TAG
-	echo "请输入你的AD_TAG(留空则跳过):"
+	echo "请输入你的AD_TAG(留空则跳过 你的secret为$secret):"
 	read adtag
 		sed -i "s/# AD_TAG = \"3c09c680b76ee91a4c25ad51f742267d\"/AD_TAG = \"$adtag\"/g" /root/mtprotoproxy/config.py
 	
+	hexvel=$(xxd -pu <<< "$domain")
+	domainhex=${hexvel%0a}
+	
 	echo "请确认配置是否有误"
 	echo "--------------------"
+	echo "Secret: $secret"
 	echo "Port: $mtp_port"
 	echo "Fake TLS domain: $domain"
 	echo "AD_TAG: $adtag"
@@ -102,16 +109,13 @@ if [ "$choice" = "1" ]; then
 	#获取IP
 	IPAddress=$(curl -sSL https://www.bt.cn/Api/getIpAddress)
 	
-	#计算域名hex值
-	hexvel=$(xxd -pu <<< "$domain")
-	domainhex=${hexvel%0a}
 	docker-compose up -d
+	
 	clear
+	sleep 2
 	echo "--------------------"
 	echo "你的MTProxy链接是:"
-	echo "tg://proxy?server=$IPAddress&port=$mtp_port&secret=ee00000000000000000000000000000001$domainhex"
-	echo "--------------------"
-	echo "Telegram: https://t.me/kldgodynb"
+	echo "tg://proxy?server=$IPAddress&port=$mtp_port&secret=ee$secret$domainhex"
 #结束安装
 
 elif [ "$choice" = "2" ]; then
