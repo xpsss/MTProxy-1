@@ -157,6 +157,9 @@ elif [ "$choice" = "5" ]; then
 	fi
 #结束停止
 
+elif [ "$choice" = "" ];then
+	echo "你什么都不输入你到底想让我干什么..."
+
 else
 	echo "???你输入的东西 这个辣鸡脚本不懂诶:("
 fi
