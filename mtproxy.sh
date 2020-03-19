@@ -107,7 +107,7 @@ if [ "$choice" = "1" ]; then
 	pause
 	
 	#获取IP
-	IPAddress=$(curl -sSL https://www.bt.cn/Api/getIpAddress)
+	IPAddress=$(curl -s https://api.ip.sb/ip --ipv4)
 	
 	docker-compose up -d
 	
