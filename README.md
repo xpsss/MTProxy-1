@@ -9,7 +9,7 @@ MTProxy一键脚本
 bash <(curl -sSL https://git.io/JvXJX)
 ```
 
-<img src="https://backblazebimg.2002000.xyz/file/imgurllx/imgs/2020/03/ce64ba572ac53877.png" />
+<img src="https://backblazebimg.2002000.xyz/file/imgurllx/imgs/2020/03/89024cd285c27c59.jpg" />
 
 <hr>
 
