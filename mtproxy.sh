@@ -116,6 +116,10 @@ if [ "$choice" = "1" ]; then
 	echo "--------------------"
 	echo "你的MTProxy链接是:"
 	echo "tg://proxy?server=$IPAddress&port=$mtp_port&secret=ee$secret$domainhex"
+	echo
+	echo "你可以在终端输入\"MTProxy\"快速打开此脚本"
+	wget https://github.com/KLDGodY/MTProxy/raw/master/MTProxy
+	mv ./MTProxy /usr/bin/MTProxy
 #结束安装
 
 elif [ "$choice" = "2" ]; then
