@@ -15,6 +15,6 @@ bash <(curl -sSL https://git.io/JvXJX)
 
 联系我：
 <br>
-Telegram:<a href="//t.me/KLDGodYnb" target="_blank">@kldgodynb</a>
+Telegram:<a href="//t.me/KLDGodYGroup" target="_blank">@KLDGodYGroup</a>
 <br>
 Mail:<a href="mailto:kldgodynb@gmail.com" target="_blank">kldgodynb@gmail.com</a>
