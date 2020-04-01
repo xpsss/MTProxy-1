@@ -1,3 +1,4 @@
+clear
 if [ -d "/root/mtprotoproxy" ]; then
 	echo "!检测到目录存在!(如果没安装提示这个 请 rm -rf /root/mtprotoproxy)"
 	exit 1
