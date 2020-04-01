@@ -1,14 +1,14 @@
 if [ ! -d "/root/mtprotoproxy" ]; then
 	echo "宝贝,都没安装呢:("
 else
-	echo "你确定要卸载吗?(请输入y或者n)"
+	echo "你确定要卸载吗?(请输入y或者n):"
 	read choice
-	if [ "$choice" = "y" ]; then
+	if [ "$choose" = "y" ]; then
 		docker stop mtprotoproxy_mtprotoproxy_1
-		cd ~
-		rm -rf mtprotoproxy
-	else if [ "$choice" = "n" ]; then
-		exit
+		cd /root
+		rm -rf /root/mtprotoproxy
+	elif [ "$choose" = "n" ]; then
+		echo "，，，"
 	else
 		echo "退出ing..."
 	fi
