@@ -1,4 +1,3 @@
-clear
 if [ -d "/root/mtprotoproxy" ]; then
 	echo "!检测到目录存在!(如果没安装提示这个 请 rm -rf /root/mtprotoproxy)"
 	exit 1
@@ -61,7 +60,11 @@ do
 	echo -e "[\033[33m错误\033[0m] 域名无法访问,请重新输入或更换域名!"
 done
 
-secret=$(head -c 16 /dev/urandom | xxd -ps)
+echo "请输入你的 secret (如果不懂请不要乱输入！会导致无法连接):"
+read secret
+if [ "$secret" == "" ]; then
+	secret=$(head -c 16 /dev/urandom | xxd -ps)
+fi
 sed -i "s/00000000000000000000000000000001/$secret/g" /root/mtprotoproxy/config.py
 
 #AG_TAG
