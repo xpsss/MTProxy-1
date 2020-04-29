@@ -36,8 +36,12 @@ if [ "$choice" = "1" ]; then
 	apt install git wget curl -y 2>/dev/null
 	yum update -y 2>/dev/null
 	yum install install git wget curl -y 2>/dev/null
-	wget -qO- get.docker.com | sh
-	systemctl enable docker
+	if command -v docker;then
+            echo ''
+        else
+            wget -qO- get.docker.com | sh
+            systemctl enable docker
+        fi
 	curl -L https://github.com/docker/compose/releases/download/1.25.0-rc4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
 	chmod +x /usr/local/bin/docker-compose
 	
