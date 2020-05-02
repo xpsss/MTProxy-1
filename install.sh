@@ -1,3 +1,7 @@
+pause() {
+	read -rsp "$(echo -e "按$green Enter 回车键 $none继续....或按$red Ctrl + C $none取消.")" -d $'\n'
+	echo
+}
 if [ -d "/root/mtprotoproxy" ]; then
 	echo "!检测到目录存在!(如果没安装提示这个 请 rm -rf /root/mtprotoproxy)"
 	exit 1
