@@ -12,7 +12,7 @@ clear
 echo "--------------------"
 echo "项目地址: https://github.com/KLDGodY/MTProxy"
 echo "运行脚本: bash <(curl -sSL https://git.io/JvXJX)"
-echo "Telegram: https://t.me/kldgodynb"
+echo "Telegram: https://t.me/joinchat/MjcleElLvN0VZSoHrmKKdw"
 echo
 echo "1) 安装代理"
 echo "2) 卸载代理"
