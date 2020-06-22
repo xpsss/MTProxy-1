@@ -1,6 +1,6 @@
 # MTProxy一键脚本
 MTProxy一键脚本
-<del>专为小白开发</del>
+<del>自己建来玩的</del>
 <hr>
 
 ### 安装/卸载:
