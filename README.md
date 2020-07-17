@@ -13,8 +13,7 @@ bash <(curl -sSL https://git.io/JvXJX)
 
 <hr>
 
-联系我：
 <br>
-Telegram:<a href="//t.me/KLDGodYGroup" target="_blank">@KLDGodYGroup</a>
+Telegram:<a href="https://t.me/joinchat/MjcleElLvN0VZSoHrmKKdw" target="_blank">https://t.me/joinchat/MjcleElLvN0VZSoHrmKKdw</a>
 <br>
 Mail:<a href="mailto:kldgodynb@gmail.com" target="_blank">kldgodynb@gmail.com</a>
