@@ -3,11 +3,11 @@ if [ ! -d "/root/mtprotoproxy" ]; then
 else
 	echo "你确定要卸载吗?(请输入y或者n):"
 	read choice
-	if [ "$choose" = "y" ]; then
+	if [ "$choice" = "y" ]; then
 		docker stop mtprotoproxy_mtprotoproxy_1
 		cd /root
 		rm -rf /root/mtprotoproxy
-	elif [ "$choose" = "n" ]; then
+	elif [ "$choice" = "n" ]; then
 		echo "，，，"
 	else
 		echo "退出ing..."
